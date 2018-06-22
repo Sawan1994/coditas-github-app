@@ -1,0 +1,27 @@
+{
+  "name": "github-app",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@types/lodash": "^4.14.110",
+    "axios": "^0.18.0",
+    "bootstrap": "^4.1.1",
+    "jquery": "^1.9.1",
+    "lodash": "^4.17.10",
+    "popper.js": "^1.14.3",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
+    "react-redux": "^5.0.7",
+    "react-scripts": "1.1.4",
+    "reactstrap": "^6.1.0",
+    "redux": "^4.0.0",
+    "redux-thunk": "^2.3.0",
+    "resolve-url-loader": "^2.3.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}

@@ -1,0 +1,12 @@
+/* user card */
+.inline-block{
+  display: inline-block;
+}
+
+ul.list-style-none{
+  list-style-type: none;
+}
+
+.capitalize{
+  text-transform: capitalize;
+}
