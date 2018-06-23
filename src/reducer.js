@@ -1,8 +1,7 @@
-import { GET_USER_LIST, GET_REPOSITORY_DETAILS, CLEAN_REPOSITORY_DETAILS, SORT_USER_LIST } from "./store/actionTypes/actionTypes";
+import { GET_USER_LIST, SORT_USER_LIST } from "./store/actionTypes/actionTypes";
 
 const initialState = {
     userData: [],
-    repoData: [],
     pagination: {
         items_per_page: 30
     },
@@ -18,16 +17,6 @@ export const rootReducer = (state = initialState, action) => {
             temp.userData = [...action.data];
             temp.totalUsers = action.total_count;
             temp.searchString = action.searchString;
-            return temp;
-
-        case GET_REPOSITORY_DETAILS:
-            temp = { ...state };
-            temp.repoData = [...action.data];
-            return temp;
-
-        case CLEAN_REPOSITORY_DETAILS:
-            temp = { ...state };
-            temp.repoData = [];
             return temp;
 
         case SORT_USER_LIST:

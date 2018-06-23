@@ -9,6 +9,9 @@ class UserContainer extends Component {
         return (
             <Container>
                 <div className="ml-5 mr-5">
+                    <div className="m-4">
+                    <p>Total Results : {this.props.totalUsers}</p>
+                    </div>
                     {this.props.userDetails.map((user, i) => {
                         return (
                             <UserCard key={user.id} score={user.score} username={user.login} url={user.url} img_url={user.avatar_url} />
@@ -22,7 +25,8 @@ class UserContainer extends Component {
 
 const matchStateToProps = (state) => {
     return {
-        userDetails: state.userData
+        userDetails: state.userData,
+        totalUsers: state.totalUsers
     };
 }
 

@@ -60,7 +60,8 @@ class Pagination extends React.Component {
         }
 
         if (page_count <= 5) {
-            pager = Array.apply(null, { length: page_count }).map(Number.call, Number);
+            pager = pager = [...Array(page_count).keys()].map(i => i + 1);
+            // pager = Array.apply(null, { length: page_count }).map(Number.call, Number);
         } else {
             if (current + 1 <= 3) {
                 pager = [...Array(4).keys()].map(i => i + 1);

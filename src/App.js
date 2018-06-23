@@ -9,8 +9,7 @@ class App extends Component {
   constructor(props){
     super(props);
     this.state = {
-      items_per_page: 30,
-
+      items_per_page: 30
     }
   }
 

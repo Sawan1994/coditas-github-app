@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 
 class RepoContainer extends Component {
 
@@ -7,7 +6,7 @@ class RepoContainer extends Component {
         return (
             <table className="table table-striped">
                 <tbody>
-                    {this.props.repoDetails.map((repo, i) => {
+                    {this.props.data.map((repo, i) => {
                         return (
                             <tr key={repo.id}>
                                 <td>{repo.name}</td>
@@ -21,10 +20,4 @@ class RepoContainer extends Component {
     }
 }
 
-const matchStateToProps = state => {
-    return {
-        repoDetails: state.repoData
-    };
-}
-
-export default connect(matchStateToProps)(RepoContainer);
+export default RepoContainer;

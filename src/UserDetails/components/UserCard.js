@@ -1,21 +1,30 @@
 import React from 'react';
 import { Collapse } from 'reactstrap';
 import RepoContainer from '../../RepoDetails/container/RepoContainer';
-import { get_repository_details, clean_repository_details } from '../../store/action/action';
-import connect from 'react-redux/lib/connect/connect';
+import axios from "axios";
 
 class UserCard extends React.Component {
 
     constructor(props) {
         super(props);
         this.toggle = this.toggle.bind(this);
-        this.state = { collapse: false };
+        this.state = {
+            collapse: false,
+            repoDetails: []
+        };
     }
 
     toggle() {
-        this.props.cleanRepositoryDetails();
-        if(!this.state.collapse){
-            this.props.getRepoDetails(this.props.username);
+        if (!this.state.collapse) {
+            const url = 'https://api.github.com/users/' + this.props.username + '/repos';
+            axios.get(url)
+                .then(res => {
+                    this.setState({
+                        repoDetails: res.data
+                    });
+                }, err => {
+                    console.log(err);
+                });
         }
         this.setState({ collapse: !this.state.collapse });
     }
@@ -48,7 +57,9 @@ class UserCard extends React.Component {
 
                     <Collapse isOpen={this.state.collapse}>
                         <div className="row">
-                            <RepoContainer/>
+                            {this.state.repoDetails.length === 0 ? <p>No details available.</p> :
+                                <RepoContainer data={this.state.repoDetails} />
+                            }
                         </div>
                     </Collapse>
 
@@ -58,11 +69,4 @@ class UserCard extends React.Component {
     }
 }
 
-const mapDispatchToProps = dispatch => {
-    return {
-        cleanRepositoryDetails: () => { return dispatch(clean_repository_details());},        
-        getRepoDetails: (username) => { return dispatch(get_repository_details(username));}
-    };
-}
-
-export default connect(null,mapDispatchToProps)(UserCard);
+export default UserCard;
